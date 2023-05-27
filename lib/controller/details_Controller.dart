@@ -84,7 +84,7 @@ class ListController extends ControllerMVC {
     if (now.month <= 10) {
       changeMonth = '0${now.month}';
     }
-    final date = '${now.day}/${changeMonth}/${now.year}';
+    final date = '${now.day}-${changeMonth}-${now.year}';
     if (!await Helper.hasConnection()) {
       showNoInternetMessage(context);
     }
