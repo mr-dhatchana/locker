@@ -41,7 +41,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CallTextField(
-                    text: 'Enter Your Name',
+                    text: 'Enter Your Mail',
                     isPassword: false,
                     icon: Icons.mail,
                     controller: _emailController),

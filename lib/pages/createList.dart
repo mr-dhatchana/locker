@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../controller/details_Controller.dart';
+import '../helpers/message.dart';
 
 class AddList extends StatefulWidget {
   AddList({Key? key}) : super(key: key);
@@ -41,6 +42,9 @@ class _AddListState extends StateMVC<AddList> {
                   height: 15,
                 ),
                 TextFormField(
+                  onSaved: (value) => appName = value as TextEditingController,
+                  onChanged: (value) =>
+                      appName = value as TextEditingController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please Enter App Name';
@@ -77,6 +81,10 @@ class _AddListState extends StateMVC<AddList> {
                   height: 20,
                 ),
                 TextFormField(
+                  onSaved: (value) =>
+                      appUserName = value as TextEditingController,
+                  onChanged: (value) =>
+                      appUserName = value as TextEditingController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please Enter UserId';
@@ -113,6 +121,10 @@ class _AddListState extends StateMVC<AddList> {
                   height: 20,
                 ),
                 TextFormField(
+                  onSaved: (value) =>
+                      appPassword = value as TextEditingController,
+                  onChanged: (value) =>
+                      appPassword = value as TextEditingController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please Enter Password';
@@ -172,6 +184,7 @@ class _AddListState extends StateMVC<AddList> {
                         _con.saveData(
                             appName.text, appUserName.text, appPassword.text);
                         Navigator.of(context).pushReplacementNamed('/Home');
+                        showMessage('Data Added Successfully', context);
                       }
                     },
                     child: Text(

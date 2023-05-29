@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../controller/details_Controller.dart';
+import '../helpers/message.dart';
 import '../helpers/sharedPreference.dart';
 
 class Drawers extends StatefulWidget {
@@ -180,6 +181,7 @@ class _DrawersState extends StateMVC<Drawers> {
                 onPressed: () async {
                   _con.updateName(nameController.text);
                   await SharedPreference.setUserData(nameController.text);
+                  showMessage("Name Updated", context);
                   setState(() {
                     Navigator.pop(context);
                   });

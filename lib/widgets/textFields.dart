@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CallTextField extends StatefulWidget {
-  const CallTextField({
+  CallTextField({
     Key? key,
     this.controller,
     this.text,
     this.isPassword,
     this.icon,
   }) : super(key: key);
-  final TextEditingController? controller;
+  late TextEditingController? controller;
   final bool? isPassword;
   final IconData? icon;
   final String? text;
@@ -22,7 +22,15 @@ class _CallTextFieldState extends State<CallTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: (value) => widget.controller = value as TextEditingController,
+      onChanged: (value) => widget.controller = value as TextEditingController,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please Enter valid Data';
+        }
+        return null;
+      },
       controller: widget.controller,
       obscureText: _isButtonPressed,
       enableSuggestions: !(widget.isPassword ?? false),
@@ -42,7 +50,7 @@ class _CallTextFieldState extends State<CallTextField> {
         suffixIcon: (widget.isPassword ?? false)
             ? IconButton(
                 icon: Icon(
-                  _isButtonPressed ? Icons.visibility : Icons.visibility_off,
+                  (_isButtonPressed) ? Icons.visibility_off : Icons.visibility,
                   size: 28,
                   color: Color.fromRGBO(222, 88, 51, 0.6),
                 ),

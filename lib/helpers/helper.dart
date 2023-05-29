@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:locker/repository/authentication.dart';
 
 import '../elements/CircularLoadingWidget.dart';
+import 'message.dart';
 
 class Helper {
   static Future<bool> hasConnection() async {
@@ -39,6 +40,7 @@ class Helper {
       ),
       onPressed: () async {
         deleteFromList(currentAppName);
+        showMessage("Deleted Successfully", context);
         await Navigator.of(context).pushReplacementNamed('/Home');
       },
     );
